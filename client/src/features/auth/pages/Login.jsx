@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../services/authApi";
-import { useAuth } from "../../providers/AuthProvider";
-import "../../assets/styles/auth.css";
+import { useAuth } from "../../../providers/AuthProvider";
+import "../../../assets/styles/auth.css"
 
 function Login() {
   const [formData, setFormData] = useState({ email: "", password: "" });
