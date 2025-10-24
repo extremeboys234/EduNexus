@@ -1,0 +1,307 @@
+/* === Global Styles === */
+:root {
+  --primary-color: #4a69bd; /* A nice blue */
+  --primary-light: #eaf0ff;
+  --secondary-color: #6c757d; /* Gray */
+  --bg-color: #f8f9fa;       /* Light gray page background */
+  --card-bg: #ffffff;      /* White */
+  --text-color: #212529;    /* Dark gray */
+  --text-light: #555;
+  --border-color: #dee2e6;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  --safe-color: #28a745;    /* Green */
+  --warning-color: #ffc107; /* Yellow */
+  --danger-color: #dc3545;   /* Red */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Navbar === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-brand h1 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0 0.5rem;
+}
+
+.nav-links a {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  color: var(--text-light);
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.nav-links a.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+.nav-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-profile span {
+  font-weight: 500;
+}
+
+/* === Main Container === */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.main-header {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.main-header h2 {
+  font-size: 2rem;
+}
+
+.main-header p {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin: 0.25rem 0;
+}
+
+/* === Button Styles === */
+.btn, .logout-btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;/* Make buttons full-width inside cards */
+}
+
+/* Ensure .logout-btn is not full-width */
+.logout-btn {
+  width: auto;
+  padding: 0.5rem 1rem;
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.logout-btn:hover {
+  background-color: #c82333; /* Darker red */
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn-primary:hover {
+  background-color: #3a5bb0;
+}
+
+.btn-secondary {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+  background-color: #e2e6ea;
+}
+
+.btn-tertiary {
+  background-color: var(--primary-light);
+  color: var(--primary-color);
+}
+.btn-tertiary:hover {
+  background-color: #d8e1f8;
+}
+
+/* === Dashboard Grid === */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* === Card Styles === */
+.card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.card h3 {
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+/* === Specific Card: Attendance === */
+.subject-attendance {
+  margin-bottom: 0.5rem;
+}
+.subject-attendance span {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.progress {
+  height: 24px;
+  line-height: 24px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 20px 0 0 20px;
+  white-space: nowrap;
+  transition: width 0.5s ease-in-out;
+}
+
+/* Progress bar colors */
+.safe .progress {
+  background-color: var(--safe-color);
+}
+.warning .progress {
+  background-color: var(--warning-color);
+  color: #333; /* Darker text for yellow bg */
+}
+.danger .progress {
+  background-color: var(--danger-color);
+}
+
+/* === Specific Card: AI Recommendations === */
+.ai-recommendations p {
+  margin: 0.25rem 0;
+}
+
+/* === Specific Card: Recent Activity === */
+.activity-feed {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-feed li {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Allow wrapping */
+}
+
+.activity-feed li:last-child {
+  border-bottom: none;
+}
+
+.activity-feed li span {
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  margin-left: 1rem;
+  flex-shrink: 0; /* Prevents span from shrinking */
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .nav-links {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .nav-links a {
+    display: block;
+    text-align: center;
+  }
+  
+  .nav-profile {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* Stack cards */
+  }
+
+  .activity-feed li {
+     flex-direction: column;
+     align-items: flex-start;
+     gap: 0.25rem;
+  }
+  .activity-feed li span {
+    margin-left: 0;
+  }
+}
