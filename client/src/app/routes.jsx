@@ -1,26 +1,47 @@
+// src//app/routes.js
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "../features/auth/pages/Login";
-import Signup from "../features/auth/pages/Signup";
-import Home from "../pages/Home";
-import PrivateRoute from "../components/PrivateRoute";
+import Login from "@/components/Login";
+import Signup from "@/components/Signup";
+import ProtectedRoute from "@/components/ProtectedRoute";
+import { AuthLayout } from "@/components/Layout/Layout";
 
-function AppRoutes() {
+// Page Components (create these or use placeholders)
+import Dashboard from "@/components/Dashboard";
+import UploadNotes from "@/components/Notes/UploadNotes";
+import Chat from "@/pages/Chat";
+/* import Notes from "./pages/Notes";
+import Attendance from "./pages/Attendance";
+import Profile from "./pages/Profile";
+ */
+function App() {
   return (
     <Router>
       <Routes>
+        {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+
+        {/* Protected Routes with Sidebar */}
         <Route
-          path="/"
           element={
-            <PrivateRoute>
-              <Home />
-            </PrivateRoute>
+            <ProtectedRoute>
+              <AuthLayout />
+            </ProtectedRoute>
           }
-        />
+        >
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/chat" element={<Chat />} />
+          {/* <Route path="/notes" element={<Notes />} />
+          <Route path="/attendance" element={<Attendance />} />
+          <Route path="/profile" element={<Profile />} /> */}
+
+          <Route path="/notes" element={<UploadNotes />} />
+          <Route path="/" element={<Dashboard />} />
+        </Route>
       </Routes>
     </Router>
   );
 }
 
-export default AppRoutes;
+export default App;
